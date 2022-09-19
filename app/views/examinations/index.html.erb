@@ -1,0 +1,23 @@
+<%= link_to 'Home', root_path %>
+<%= link_to 'Register For Exam', new_examination_path %>
+
+<%= button_to 'Log out', destroy_user_session_path, method: :delete %>
+
+<h1>List Of Participation</h1>
+
+<table>
+<thead>
+<tr>
+<th>Students Name</th>
+<th>College</th>
+</tr>
+</thead>
+<tbody>
+<% @examinations.each do |examination| %>
+    <tr>
+      <td><%= examination.full_name %></td>
+      <td><%= examination.college_name %></td>
+      </tr>
+      <% end %>
+      </tbody>
+      </table>
