@@ -26,3 +26,13 @@ q3 = McQuestion.create!(
     distractor_1: 'Create',
     distractor_2: 'Code'
 )
+
+quiz1 = Quiz.create!(
+    title: 'MVC Concepts',
+    description: 'This quiz covers concepts related to the Model-View-Controller web application architecture.'
+)
+
+quiz2 = Quiz.create!(
+    title: 'Rails Concepts',
+    description: 'This quiz covers concepts related to web application development using the Ruby on Rails platform.'
+)
