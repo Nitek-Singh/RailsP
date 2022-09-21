@@ -9,15 +9,6 @@ class QuizzesController < ApplicationController
         end
       end
 
-      def show
-        # find a particular object
-        quiz = Quiz.find(params[:id])
-        # display the object
-        respond_to do |format|
-          format.html { render :show, locals: { quiz: quiz } }
-        end
-      end
-
       def new
         # make empty quiz object
         quiz = Quiz.new
@@ -47,6 +38,17 @@ class QuizzesController < ApplicationController
           end
         end
       end
+
+      def show
+        # find a particular object
+        quiz = Quiz.find(params[:id])
+        # display the object
+        respond_to do |format|
+          format.html { render :show, locals: { quiz: quiz } }
+        end
+      end
+
+      
 
       def edit
         # object to use in form

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_21_153012) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_21_163934) do
   create_table "examinations", force: :cascade do |t|
     t.string "full_name"
     t.string "email"
@@ -28,6 +28,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_21_153012) do
     t.string "distractor_2"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "quiz_id"
+    t.index ["quiz_id"], name: "index_mc_questions_on_quiz_id"
   end
 
   create_table "quizzes", force: :cascade do |t|
@@ -49,4 +51,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_21_153012) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "mc_questions", "quizzes"
 end

@@ -4,3 +4,29 @@
   <%= quiz.description %>
 </p>
 <%= button_to 'Delete', quiz_path(quiz), method: :delete %>
+
+<h2>Questions</h2>
+
+<%= button_to 'New Question', new_quiz_mc_question_path(quiz) %>
+
+<% quiz.mc_questions.each do |question| %>
+  <div id="<%= dom_id(question) %>">
+    <p>
+      <%= question.question %>
+      <%= link_to '🔎', mc_question_path(question) %>
+      <%= link_to '🖋', edit_mc_question_path(question) %>
+      <%= button_to '🗑', mc_question_path(question), method: :delete %>
+    </p>
+
+    <%
+      choices = [question.answer, question.distractor_1]
+      choices << question.distractor_2 if !question.distractor_2.blank?
+      choices.each do |c|
+    %>
+      <div>
+        <%= radio_button_tag "guess_#{question.id}", c, checked = c == question.answer, disabled: true %>
+        <%= label_tag "guess_#{question.id}_#{c}", c %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -11,4 +11,6 @@
 class Quiz < ApplicationRecord
     validates :title, presence: true
     validates :description, presence: true
+    
+    has_many :mc_questions, dependent: :destroy
 end
